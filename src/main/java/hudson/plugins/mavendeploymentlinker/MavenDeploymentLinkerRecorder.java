@@ -51,7 +51,7 @@ public class MavenDeploymentLinkerRecorder extends Recorder {
     public boolean perform(AbstractBuild<?, ?> build, Launcher launcher, BuildListener listener) throws InterruptedException, IOException {
         File logFile = build.getLogFile();
         BufferedReader in = new BufferedReader(new FileReader(logFile));
-        Pattern pattern = Pattern.compile("^.*?Uploading: (.*?)$");
+        Pattern pattern = Pattern.compile("^.*?Uploading(?: to .*?)?: (.*?)$");
         Pattern filterPattern = Pattern.compile(StringUtils.isNotBlank(regexp) ? regexp : ".*");
         Pattern ignoredPattern = Pattern.compile(IGNORED_RESOURCES);
         String line;
